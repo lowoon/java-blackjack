@@ -32,11 +32,11 @@ public class Cards {
                 .sum();
     }
 
-    public boolean areBust() {
+    public boolean isBust() {
         return calculatePointAccordingToHasAce() > BLACK_JACK;
     }
 
-    public boolean areBlackJack() {
+    public boolean isBlackJack() {
         return cards.size() == BLACK_JACK_SIZE && areBlackJackPoint();
     }
 

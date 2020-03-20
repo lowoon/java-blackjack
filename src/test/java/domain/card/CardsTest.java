@@ -37,7 +37,7 @@ class CardsTest {
         cards.add(new Card(Symbol.DIAMOND, Type.EIGHT));
         cards.add(new Card(Symbol.HEART, Type.EIGHT));
 
-        assertThat(cards.areBust()).isTrue();
+        assertThat(cards.isBust()).isTrue();
     }
 
     @Test
@@ -46,7 +46,7 @@ class CardsTest {
         cards.add(new Card(Symbol.CLOVER, Type.ACE));
         cards.add(new Card(Symbol.DIAMOND, Type.KING));
 
-        assertThat(cards.areBlackJack()).isTrue();
+        assertThat(cards.isBlackJack()).isTrue();
     }
 
     @Test

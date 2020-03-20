@@ -14,21 +14,21 @@ public class PlayersInfo {
 
     private Map<Player, BettingMoney> playersInfo;
 
+    private PlayersInfo(Map<String, Integer> playersInfo) {
+        this.playersInfo = playersInfo.entrySet()
+                .stream()
+                .collect(Collectors.toMap(entry -> new Player(entry.getKey()),
+                        entry -> new BettingMoney(entry.getValue()),
+                        (first, second) -> first,
+                        LinkedHashMap::new));
+    }
+
     public static PlayersInfo of(Map<String, Integer> playerNames) {
         return new PlayersInfo(playerNames);
     }
 
-    private PlayersInfo(Map<String, Integer> playersInfo) {
-        this.playersInfo = new LinkedHashMap<>();
-        playersInfo
-                .forEach(
-                        (name, bettingMoney) -> this.playersInfo.put(new Player(name), new BettingMoney(bettingMoney)));
-    }
-
     public void draw(Deck deck) {
-        playersInfo.forEach(
-                (player, bettingMoney) -> player.draw(deck)
-        );
+        playersInfo.forEach((player, bettingMoney) -> player.draw(deck));
     }
 
     public void additionalDealOut(Deck deck, Function<String, Boolean> isYes, Consumer<Player> showResult) {
@@ -45,9 +45,7 @@ public class PlayersInfo {
                 .stream()
                 .collect(Collectors.toMap(Function.identity(),
                         Player::calculatePoint,
-                        (e1, e2) -> {
-                            throw new AssertionError();
-                        },
+                        (first, second) -> first,
                         LinkedHashMap::new));
     }
 

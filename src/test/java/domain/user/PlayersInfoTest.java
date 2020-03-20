@@ -39,9 +39,7 @@ class PlayersInfoTest {
         List<String> names = Arrays.asList("pobi", "jason", "woo");
         Map<String, Integer> playerInfo = names.stream()
                 .collect(Collectors.toMap(Function.identity(), name -> 1000,
-                        (e1, e2) -> {
-                            throw new AssertionError("중복된 키가 있습니다.");
-                        },
+                        (first, second) -> first,
                         LinkedHashMap::new));
         playersInfo = PlayersInfo.of(playerInfo);
     }

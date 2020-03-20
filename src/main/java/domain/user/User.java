@@ -21,11 +21,11 @@ public abstract class User implements Comparable<User> {
     }
 
     public boolean isBust() {
-        return cards.areBust();
+        return cards.isBust();
     }
 
     public boolean isBlackJack() {
-        return cards.areBlackJack();
+        return cards.isBlackJack();
     }
 
     @Override

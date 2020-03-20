@@ -19,7 +19,7 @@ public class Dealer extends User {
 
     @Override
     protected boolean isAvailableToDraw() {
-        return !cards.areBust() && !cards.areBlackJack() && !cards.areBlackJackPoint()
+        return !cards.isBust() && !cards.isBlackJack() && !cards.areBlackJackPoint()
                 && cards.calculatePointAccordingToHasAce() < PIVOT;
     }
 
