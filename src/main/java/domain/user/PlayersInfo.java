@@ -32,12 +32,16 @@ public class PlayersInfo {
     }
 
     public void additionalDealOut(Deck deck, Function<String, Boolean> isYes, Consumer<Player> showResult) {
-        playersInfo.forEach((player, bettingMoney) -> {
-            while (player.isAvailableToDraw() && isYes.apply(player.name.getName())) {
-                player.draw(deck);
-                showResult.accept(player);
-            }
-        });
+        for (Player player : playersInfo.keySet()) {
+            askAndDealOut(deck, isYes, showResult, player);
+        }
+    }
+
+    private void askAndDealOut(Deck deck, Function<String, Boolean> isYes, Consumer<Player> showResult, Player player) {
+        while (player.isAvailableToDraw() && isYes.apply(player.name.getName())) {
+            player.draw(deck);
+            showResult.accept(player);
+        }
     }
 
     public Map<User, Integer> calculatePoint() {
@@ -52,8 +56,10 @@ public class PlayersInfo {
     public Map<Player, Integer> calculateProfit(Dealer dealer) {
         Map<Player, Integer> profitOfPlayers = new LinkedHashMap<>();
 
-        playersInfo.forEach((player, bettingMoney) ->
-                profitOfPlayers.put(player, (int)(bettingMoney.getMoney() * player.decideRatio(dealer).getRatio())));
+        for (Map.Entry<Player, BettingMoney> entry : playersInfo.entrySet()) {
+            profitOfPlayers.put(entry.getKey(),
+                    (int)(entry.getValue().getMoney() * entry.getKey().decideRatio(dealer).getRatio()));
+        }
 
         return profitOfPlayers;
     }

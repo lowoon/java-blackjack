@@ -13,12 +13,12 @@ public class Player extends User {
 
     @Override
     protected boolean isAvailableToDraw() {
-        return !cards.isBust() && !cards.isBlackJack() && !cards.areBlackJackPoint();
+        return !cards.isBust() && !cards.isBlackJack() && !cards.isBlackJackPoint();
     }
 
     public Ratio decideRatio(Dealer dealer) {
         return Arrays.stream(PlayerResultRule.values())
-                .filter(rule -> rule.condition(this, dealer))
+                .filter(rule -> rule.condition(this.cards, dealer.cards))
                 .findFirst()
                 .orElseThrow(() -> new AssertionError("게임 규칙이 올바르지 않습니다."))
                 .getRatio();

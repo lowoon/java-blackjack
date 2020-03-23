@@ -3,7 +3,7 @@ package domain.card;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cards {
+public class Cards implements Comparable<Cards> {
 
     private static final int BLACK_JACK = 21;
     private static final int BLACK_JACK_SIZE = 2;
@@ -37,10 +37,10 @@ public class Cards {
     }
 
     public boolean isBlackJack() {
-        return cards.size() == BLACK_JACK_SIZE && areBlackJackPoint();
+        return cards.size() == BLACK_JACK_SIZE && isBlackJackPoint();
     }
 
-    public boolean areBlackJackPoint() {
+    public boolean isBlackJackPoint() {
         return calculatePointAccordingToHasAce() == BLACK_JACK;
     }
 
@@ -51,5 +51,10 @@ public class Cards {
 
     public List<Card> getCards() {
         return cards;
+    }
+
+    @Override
+    public int compareTo(Cards cards) {
+        return calculatePointAccordingToHasAce() - cards.calculatePointAccordingToHasAce();
     }
 }

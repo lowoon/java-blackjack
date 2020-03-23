@@ -6,7 +6,7 @@ import domain.card.Card;
 import domain.card.Cards;
 import domain.card.Deck;
 
-public abstract class User implements Comparable<User> {
+public abstract class User {
 
     protected final Cards cards;
     protected final Name name;
@@ -18,19 +18,6 @@ public abstract class User implements Comparable<User> {
 
     public void draw(Deck deck) {
         cards.add(deck.dealOut());
-    }
-
-    public boolean isBust() {
-        return cards.isBust();
-    }
-
-    public boolean isBlackJack() {
-        return cards.isBlackJack();
-    }
-
-    @Override
-    public int compareTo(User user) {
-        return calculatePoint() - user.calculatePoint();
     }
 
     public int calculatePoint() {
