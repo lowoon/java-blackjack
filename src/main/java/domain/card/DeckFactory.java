@@ -5,26 +5,14 @@ import java.util.List;
 
 public class DeckFactory {
 
-    private static List<Card> DECK_CARDS = createDeckCards();
+    private static List<Card> DECK_CARDS = new ArrayList<>();
 
-    private static List<Card> createDeckCards() {
-        List<Card> cards = new ArrayList<>();
-
+    static {
         for (Symbol symbol : Symbol.values()) {
-            cards.addAll(createCard(symbol));
+            for (Type type : Type.values()) {
+                DECK_CARDS.add(new Card(symbol, type));
+            }
         }
-
-        return cards;
-    }
-
-    private static List<Card> createCard(Symbol symbol) {
-        List<Card> cards = new ArrayList<>();
-
-        for (Type type : Type.values()) {
-            cards.add(new Card(symbol, type));
-        }
-
-        return cards;
     }
 
     public static Deck createDeck() {
