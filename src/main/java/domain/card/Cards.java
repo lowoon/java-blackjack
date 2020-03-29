@@ -49,12 +49,12 @@ public class Cards implements Comparable<Cards> {
                 .anyMatch(Card::isAce);
     }
 
-    public List<Card> getCards() {
-        return cards;
-    }
-
     @Override
     public int compareTo(Cards cards) {
         return calculatePointAccordingToHasAce() - cards.calculatePointAccordingToHasAce();
+    }
+
+    public List<Card> getCards() {
+        return cards;
     }
 }

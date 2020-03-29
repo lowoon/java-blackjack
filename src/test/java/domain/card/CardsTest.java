@@ -56,7 +56,7 @@ class CardsTest {
         cards.add(new Card(Symbol.DIAMOND, Type.FIVE));
         cards.add(new Card(Symbol.DIAMOND, Type.SIX));
 
-        assertThat(cards.areBlackJackPoint()).isTrue();
+        assertThat(cards.isBlackJackPoint()).isTrue();
     }
 
     @ParameterizedTest
