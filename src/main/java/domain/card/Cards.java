@@ -9,6 +9,20 @@ public class Cards {
         this.cards = cards;
     }
 
+    public void add(Card card) {
+        cards.add(card);
+    }
+
+    public boolean isBust() {
+        return calculateScore() > 21;
+    }
+
+    private int calculateScore() {
+        return cards.stream()
+            .mapToInt(card -> card.getDenomination().getScore())
+            .sum();
+    }
+
     public List<Card> getCards() {
         return cards;
     }
