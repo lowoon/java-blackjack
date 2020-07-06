@@ -1,6 +1,6 @@
 package domain.user;
 
-import domain.exception.InvalidNameException;
+import exception.InvalidNameException;
 
 public class Name {
     public static final int MAX_LENGTH = 5;

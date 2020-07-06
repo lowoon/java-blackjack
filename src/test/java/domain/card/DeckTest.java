@@ -2,17 +2,17 @@ package domain.card;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import domain.exception.InvalidDeckException;
+import exception.InvalidDeckException;
 
 class DeckTest {
     @Test
+    @DisplayName("Deck의 걔수가 52개 아닌 경우")
     void createWithInvalidCards() {
         Queue<Card> cards = new LinkedList<>();
 

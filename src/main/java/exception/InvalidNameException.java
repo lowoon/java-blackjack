@@ -1,6 +1,4 @@
-package domain.exception;
-
-import domain.state.Running;
+package exception;
 
 public class InvalidNameException extends RuntimeException {
     public InvalidNameException(String message) {

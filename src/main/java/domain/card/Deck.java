@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Queue;
 import java.util.Set;
 
-import domain.exception.InvalidDeckException;
+import exception.InvalidDeckException;
 
 public class Deck {
     private static final int DECK_SIZE = 52;
