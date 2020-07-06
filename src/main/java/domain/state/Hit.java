@@ -8,6 +8,10 @@ public class Hit extends Running {
         super(cards);
     }
 
+    public static Hit initial() {
+        return new Hit(Cards.empty());
+    }
+
     @Override
     public State stay() {
         return new Stay(cards);

@@ -1,5 +1,6 @@
 package domain.card;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Cards {
@@ -7,6 +8,10 @@ public class Cards {
 
     public Cards(List<Card> cards) {
         this.cards = cards;
+    }
+
+    public static Cards empty() {
+        return new Cards(Collections.emptyList());
     }
 
     public void add(Card card) {
