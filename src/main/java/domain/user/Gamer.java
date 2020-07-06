@@ -1,7 +1,12 @@
 package domain.user;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
+import domain.card.Card;
+import domain.card.Deck;
 import domain.state.State;
 
 public abstract class Gamer implements User {
@@ -16,6 +21,16 @@ public abstract class Gamer implements User {
     @Override
     public int calculateScore() {
         return state.cards().calculateScore();
+    }
+
+    @Override
+    public void draw(Deck deck) {
+        state.draw(deck.poll());
+    }
+
+    @Override
+    public List<Card> cards() {
+        return Collections.unmodifiableList(new ArrayList<>(state.cards().getCards()));
     }
 
     @Override

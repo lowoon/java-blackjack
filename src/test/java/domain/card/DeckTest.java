@@ -23,7 +23,7 @@ class DeckTest {
 
     @Test
     @DisplayName("카드 한장 뽑기")
-    void draw() {
+    void poll() {
         Queue<Card> cards  = new LinkedList<>();
         for (Denomination denomination : Denomination.values()) {
             for (Suit suit : Suit.values()) {
@@ -32,7 +32,7 @@ class DeckTest {
         }
         Deck deck = new Deck(cards);
 
-        Card card = deck.draw();
+        Card card = deck.poll();
 
         assertThat(card).isEqualTo(new Card(Denomination.ACE, Suit.CLUB));
     }

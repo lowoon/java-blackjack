@@ -24,7 +24,7 @@ public class Deck {
         }
     }
 
-    public Card draw() {
+    public Card poll() {
         return deck.poll();
     }
 

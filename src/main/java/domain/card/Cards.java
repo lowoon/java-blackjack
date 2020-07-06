@@ -1,6 +1,6 @@
 package domain.card;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cards {
@@ -11,7 +11,7 @@ public class Cards {
     }
 
     public static Cards empty() {
-        return new Cards(Collections.emptyList());
+        return new Cards(new ArrayList<>());
     }
 
     public void add(Card card) {
