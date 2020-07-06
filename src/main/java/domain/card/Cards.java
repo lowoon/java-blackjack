@@ -17,7 +17,7 @@ public class Cards {
         return calculateScore() > 21;
     }
 
-    private int calculateScore() {
+    public int calculateScore() {
         return cards.stream()
             .mapToInt(card -> card.getDenomination().getScore())
             .sum();
