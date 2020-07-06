@@ -25,7 +25,17 @@ public abstract class Gamer implements User {
 
     @Override
     public void draw(Deck deck) {
-        state.draw(deck.poll());
+        state = state.draw(deck.poll());
+    }
+
+    @Override
+    public void stay() {
+        state = state.stay();
+    }
+
+    @Override
+    public boolean isNotFinished() {
+        return !state.isFinished();
     }
 
     @Override

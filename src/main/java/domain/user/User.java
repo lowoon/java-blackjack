@@ -16,4 +16,8 @@ public interface User {
     void draw(Deck deck);
 
     List<Card> cards();
+
+    boolean isNotFinished();
+
+    void stay();
 }
